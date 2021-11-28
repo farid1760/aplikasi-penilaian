@@ -17,15 +17,15 @@ class KelasSeeder extends Seeder
         $data = [
             [
                 "id" => 1,
-                "kelas" => 10,
+                "kelas" => "10",
             ],
             [
                 "id" => 2,
-                "kelas" => 11,
+                "kelas" => "11",
             ],
             [
                 "id" => 3,
-                "kelas" => 12,
+                "kelas" => "12",
             ],
         ];
 

@@ -18,37 +18,37 @@ class JurusanSeeder extends Seeder
             [
                 "id" => 1,
                 "jurusan" => "Rekayasa Perangkat Lunak",
-                "singaktan" => "RPL",
+                "singkatan" => "RPL",
             ],
             [
                 "id" => 2,
                 "jurusan" => "Administrasi Perhotelan",
-                "singaktan" => "APH",
+                "singkatan" => "APH",
             ],
             [
                 "id" => 3,
                 "jurusan" => "Akutansi Dan Keuangan Lembaga",
-                "singaktan" => "AKL",
+                "singkatan" => "AKL",
             ],
             [
                 "id" => 4,
                 "jurusan" => "Multimedia",
-                "singaktan" => "MM",
+                "singkatan" => "MM",
             ],
             [
                 "id" => 5,
                 "jurusan" => "Teknik Kendaraan Ringan",
-                "singaktan" => "TKR",
+                "singkatan" => "TKR",
             ],
             [
                 "id" => 6,
                 "jurusan" => "Teknik Sepeda Motor",
-                "singaktan" => "TSM",
+                "singkatan" => "TSM",
             ],
             [
                 "id" => 7,
                 "jurusan" => "Umum",
-                "singaktan" => "Umum",
+                "singkatan" => "Umum",
             ],
         ];
 
