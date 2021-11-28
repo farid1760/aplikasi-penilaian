@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Penilaian;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,11 @@ Route::middleware(['auth', 'is_murid'])->group(function () {
     })->name('murid.dashboard');
 
     Route::get('murid/nilai', function () {
-        return view('murid.nilai.index');
+        $data = [
+            "penilaians" => Penilaian::join('pengajarans', 'pengajarans.id', '=', 'penilaians.id_pengajaran')->join('mapels', 'mapels.id', '=', 'pengajarans.id_mapel')->join('gurus', 'gurus.id', '=', 'pengajarans.id_guru')->where('id_murid', Auth::user()->profile_murid)->get(),
+        ];
+
+        return view('murid.nilai.index', $data);
     })->name('murid.nilai');
 
 });

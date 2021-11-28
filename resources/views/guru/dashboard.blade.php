@@ -18,22 +18,22 @@
                                 <span class="text-sm font-medium">Dashboard</span>
                             </a>
                         </li>
-                        
+
                         </li>
                         <li>
-                            <a href="{{ route('guru.management-nilai') }}"
+                            <a href="{{ route('guru.management-pengajaran') }}"
+                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
+                                        class="bx bx-user"></i></span>
+                                <span class="text-sm font-medium">Management Pengajaran</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('guru.management-penilaian') }}"
                                 class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                 <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
                                         class="bx bx-user"></i></span>
                                 <span class="text-sm font-medium">Management Nilai</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-log-out"></i></span>
-                                <span class="text-sm font-medium">Logout</span>
                             </a>
                         </li>
                     </ul>
@@ -41,57 +41,43 @@
             </div>
         </div>
 
-        <div class="content px-10 pt-10 float-left" style="width: 82.2%">
-            <div class="button w-full pb-10 flex justify-end">
-                <button class="bg-green-300 px-10 py-3 text-xl font-bold text-black rounded-full shadow-lg">Tambah
-                    Data</button>
+        <!-- component -->
+        <section class="text-gray-600 body-font">
+            <div class="container px-7 py-20 mx-auto">
+            <div class="flex flex-wrap w-80 mb-8">
+                <div class="w-full mb-6 px-8 lg:mb-0">
+                <h1 class="sm:text-4xl text-5xl font-medium title-font mb-2 text-gray-900">Statistic</h1>
+                <div class="h-1 w-32  bg-indigo-500 rounded"></div>
+                </div>
             </div>
-
-            <!-- component -->
-            <table class="min-w-full border-collapse block md:table ">
-                <thead class="block md:table-header-group">
-                    <tr
-                        class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            NIP</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            NAME</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            JURUSAN</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            MAPEL</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            E-MAIL</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody class="block md:table-row-group">
-                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input type="text" value="121323123" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input type="text" value="Muhammad Ikhsan Bintang" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input type="text" value="Rekayasa Perangkat Lunak" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input type="text" value="Pemrogramam dasar" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input type="text" value="ikhsanbintang3292@gmail.com" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
-                            <span class="inline-block w-1/3 md:hidden font-bold ">Actions</span>
-                            <button
-                                class="bg-blue-500 hover:bg-blue-700 text-white my-2 font-bold py-1 px-4 border border-blue-500 rounded">Save</button>
-                            <button
-                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
-                        </td>
-                    </tr>
-                   
-                </tbody>
-            </table>
-
-        </div>
+            <div class="flex flex-wrap -m-4 text-center">
+                <div class="p-4 sm:w-1/4 w-1/2">
+                <div class="bg-indigo-500 rounded-lg p-2 xl:p-6">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-white">2.7K</h2>
+                    <p class="leading-relaxed text-gray-100 font-bold">Users</p>
+                </div>
+                </div>
+                <div class="p-4 sm:w-1/4 w-1/2">
+                <div class="bg-indigo-500 rounded-lg p-2 xl:p-6">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-white">1.8K</h2>
+                    <p class="leading-relaxed text-gray-100 font-bold">Subscribes</p>
+                </div>
+                </div>
+                <div class="p-4 sm:w-1/4 w-1/2">
+                <div class="bg-indigo-500 rounded-lg p-2 xl:p-6">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-white">35</h2>
+                    <p class="leading-relaxed text-gray-100 font-bold">Downloads</p>
+                </div>
+                </div>
+                <div class="p-4 sm:w-1/4 w-1/2">
+                <div class="bg-indigo-500 rounded-lg p-2 xl:p-6">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-white">4</h2>
+                    <p class="leading-relaxed text-gray-100 font-bold">Products</p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
     </section>
 
 </x-app-layout>

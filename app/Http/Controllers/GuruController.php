@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreGuruRequest;
 use App\Http\Requests\UpdateGuruRequest;
 use Illuminate\Support\Facades\Redirect;
-use Symfony\Component\HttpFoundation\Request;
 
 class GuruController extends Controller
 {
@@ -54,6 +54,7 @@ class GuruController extends Controller
         $data["password"] = Hash::make($data["password"]);
 
         $data = [
+            "name" => $credentials['nama'],
             "email" => $data['email'],
             "password" => $data['password'],
             "role" => 'guru',

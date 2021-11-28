@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PengajaranController;
+use App\Http\Controllers\PenilaianController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,20 +20,28 @@ Route::middleware(['auth', 'is_guru'])->group(function () {
 
     Route::get('guru/dashboard', function () {
         return view('guru.dashboard');
+
     })->name('guru.dashboard');
 
-    Route::get('guru/management-nilai', function () {
-        $data = [
-            'action' => route("guru.management-nilai.create-process")
-        ];
+    Route::get('guru/management-pengajaran', [PengajaranController::class, 'index'])
+            ->name('guru.management-pengajaran');
 
-        return view('guru.management-nilai.index', $data);
-    })->name('guru.management-nilai');
+    Route::post('guru/management-pengajaran/create-process', [PengajaranController::class, 'create'])
+            ->name('guru.management-pengajaran.create-process');
 
 
+    // Route::get('guru/management-penilaian/nilai/{id}', [PenilaianController::class, 'create'])
+    //         ->name('guru.management-penilaian.nilai');
 
-    Route::post('guru/management-nilai/create-process', function (Request $request) {
-        
-    })->name('guru.management-nilai.create-process');
+
+
+    Route::get('guru/management-penilaian', [PenilaianController::class, 'index'])
+            ->name('guru.management-penilaian');
+
+    Route::post('guru/management-penilaian/create-process', [PenilaianController::class, 'create'])
+            ->name('guru.management-penilaian.create-process');
+
+
+
 });
 

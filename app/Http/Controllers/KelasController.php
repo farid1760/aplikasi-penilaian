@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreKelasRequest;
 use App\Http\Requests\UpdateKelasRequest;
-use Symfony\Component\HttpFoundation\Request;
 
 class KelasController extends Controller
 {

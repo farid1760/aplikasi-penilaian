@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreJurusanRequest;
 use App\Http\Requests\UpdateJurusanRequest;
-use Illuminate\Support\Facades\Redirect;
-use Symfony\Component\HttpFoundation\Request;
 
 class JurusanController extends Controller
 {

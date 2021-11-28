@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mapel;
+use App\Models\Jurusan;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreMapelRequest;
 use App\Http\Requests\UpdateMapelRequest;
-use App\Models\Jurusan;
-use Symfony\Component\HttpFoundation\Request;
 
 class MapelController extends Controller
 {

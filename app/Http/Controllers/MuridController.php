@@ -6,10 +6,10 @@ use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Murid;
 use App\Models\Jurusan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreMuridRequest;
 use App\Http\Requests\UpdateMuridRequest;
-use Symfony\Component\HttpFoundation\Request;
 
 class MuridController extends Controller
 {
@@ -59,6 +59,7 @@ class MuridController extends Controller
         $data["password"] = Hash::make($data["password"]);
 
         $data = [
+            "name" => $credentials['nama'],
             "email" => $data['email'],
             "password" => $data['password'],
             "role" => 'murid',
