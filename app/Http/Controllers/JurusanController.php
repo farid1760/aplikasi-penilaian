@@ -18,7 +18,9 @@ class JurusanController extends Controller
     public function index()
     {
         $data = [
-            'action' => route("admin.management-jurusan.create-process")
+            'action' => route("admin.management-jurusan.create-process"),
+            'jurusans' => Jurusan::all(),
+            'route' => "admin.management-jurusan"
         ];
 
         return view('admin.management-jurusan.index', $data);
@@ -35,7 +37,7 @@ class JurusanController extends Controller
             "jurusan" => ["required"],
             "singkatan" => ["required"],
         ]);
-        
+
         $jurusan->create($credentials);
 
         return Redirect()->route("admin.management-jurusan")->with("pesan", "Berhasil Menambah Data");

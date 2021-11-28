@@ -6,63 +6,7 @@
     </x-slot> --}}
 
     <section class="w-full h-screen">
-        <div class="sidebar float-left" id="col1">
-            <div class="min-h-screen flex flex-row bg-gray-100 w-60">
-                <div class="flex flex-col w-full bg-white rounded-r-3xl overflow-hidden">
-                    <ul class="flex flex-col py-4">
-                        <li>
-                            <a href="{{ route('admin.dashboard') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-home"></i></span>
-                                <span class="text-sm font-medium">Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-guru') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Guru</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-murid') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Murid</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-jurusan') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Jurusan</span>
-                            </a>
-                        </li>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-mapel') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Mapel</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-log-out"></i></span>
-                                <span class="text-sm font-medium">Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-sidebar-admin></x-sidebar-admin>
 
         <div class="content px-10 pt-10 float-left" style="width: 82.2%">
             <div class="button w-full pb-10 flex justify-end">
@@ -82,12 +26,23 @@
                         <th
                             class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
                             KELAS</th>
+                        <th
+                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
+                            ACTION</th>
                     </tr>
                 </thead>
                 <tbody class="block md:table-row-group">
+                    @php
+                        $i=1
+                    @endphp
+                    @forelse ($kelas as $k)
                     <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="no" type="text" value="121323123" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="kelas" type="text" value="Muhammad Ikhsan Bintang" class="bg-transparent border-0 w-full"></td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            {{ $i }}
+                        </td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            <input name="kelas" type="text" value="{{ $k->kelas }}" class="bg-transparent border-0 w-full">
+                        </td>
                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                             <span class="inline-block w-1/3 md:hidden font-bold ">Actions</span>
                             <button
@@ -96,7 +51,15 @@
                             type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                         </td>
                     </tr>
-                   
+                    @php
+                        $i++
+                    @endphp
+                    @empty
+                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                        <td colspan="4" class="text-xl text-center font-bold py-5">Data Kelas Masih Kosong 😒😒</td>
+                    </tr>
+                    @endforelse
+
                 </tbody>
             </table>
 
@@ -109,8 +72,8 @@
         </x-slot>
         <div class="grid grid-cols-1 w-full">
             <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="nip">Kelas</label>
-                <input type="text" class="rounded-lg" name="kelas" placeholder="Masukan NIP">
+                <label class="pt-3 pb-1" for="kelas">Kelas</label>
+                <input type="text" class="rounded-lg" name="kelas" id="kelas" placeholder="Masukan Kelas">
             </div>
         </div>
     </x-modal>

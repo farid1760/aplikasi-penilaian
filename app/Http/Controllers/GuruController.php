@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\User;
-use App\Http\Requests\StoreGuruRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreGuruRequest;
+use App\Http\Requests\UpdateGuruRequest;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -19,7 +20,9 @@ class GuruController extends Controller
     public function index()
     {
         $data = [
-            'action' => route("admin.management-guru.create-process")
+            'action' => route("admin.management-guru.create-process"),
+            'gurus' => User::join('gurus', 'gurus.id', '=', 'users.profile_guru')->where('role', 'guru')->get(),
+            'route' => "admin.management-guru"
         ];
 
         return view('admin.management-guru.index', $data);
@@ -35,24 +38,31 @@ class GuruController extends Controller
         $credentials = $request->validate([
             "nip" => ["required", "unique:gurus,nip"],
             "nama" => ["required"],
-            "id_jurusan" => ["required"],
-            "id_mapel" => ["required"],
 
         ]);
 
         $guru->create($credentials);
 
+        $nip = $guru->where("nip", $credentials["nip"])->first();
+        $id = $nip->id;
+
         $data = $request->validate([
             "email" => ['required', 'unique:users,email'],
             "password" => ['required', 'unique:users,password'],
         ]);
-        $nip = $guru->where("nip", $credentials["nip"])->first();
-        $id = $nip->id;
+
         $data["password"] = Hash::make($data["password"]);
+
+        $data = [
+            "email" => $data['email'],
+            "password" => $data['password'],
+            "role" => 'guru',
+            "profile_guru" => $id
+        ];
 
         $user->create($data);
 
-        return redirect()->route("admin.manage-guru")->with("pesan", "Data berhasil Ditambahkan");
+        return redirect()->route("admin.management-guru")->with("pesan", "Data berhasil Ditambahkan");
 
     }
 

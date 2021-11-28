@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Http\Requests\StoreKelasRequest;
 use App\Http\Requests\UpdateKelasRequest;
+use Symfony\Component\HttpFoundation\Request;
 
 class KelasController extends Controller
 {
@@ -16,8 +17,11 @@ class KelasController extends Controller
     public function index()
     {
         $data = [
-            'action' => route("admin.management-kelas.create-process")
+            'action' => route("admin.management-kelas.create-process"),
+            'route' => "admin.management-kelas",
+            'kelas' => Kelas::all()
         ];
+
         return view('admin.management-kelas.index', $data);
     }
 
@@ -26,9 +30,15 @@ class KelasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Kelas $kelas)
     {
-        //
+        $credentials = $request->validate([
+            "kelas" => ['required']
+        ]);
+
+        $kelas->create($credentials);
+
+        return redirect()->route('admin.management-kelas')->with('pesan', 'Berhasil Tambah Data');
     }
 
     /**

@@ -17,12 +17,7 @@ class CreateGurusTable extends Migration
             $table->id();
             $table->integer("nip");
             $table->string("nama");
-            $table->unsignedBigInteger("id_jurusan");
-            $table->unsignedBigInteger("id_mapel");
             $table->timestamps();
-
-            $table->foreign("id_jurusan")->references("id")->on("jurusans")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign("id_mapel")->references("id")->on("mapels")->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

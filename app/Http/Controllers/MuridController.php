@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Kelas;
 use App\Models\Murid;
+use App\Models\Jurusan;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreMuridRequest;
 use App\Http\Requests\UpdateMuridRequest;
+use Symfony\Component\HttpFoundation\Request;
 
 class MuridController extends Controller
 {
@@ -16,7 +21,11 @@ class MuridController extends Controller
     public function index()
     {
         $data = [
-            'action' => route("admin.management-murid.create-process")
+            'action' => route("admin.management-murid.create-process"),
+            'route' => "admin.management-murid",
+            'jurusans' => Jurusan::all(),
+            'kelas' => Kelas::all(),
+            'murids' => User::join('murids', 'murids.id', '=', 'users.profile_murid')->join('jurusans', 'jurusans.id', '=', 'murids.id_jurusan')->join('kelas', 'kelas.id', '=', 'murids.id_kelas')->where('role', 'murid')->get()
         ];
 
         return view('admin.management-murid.index', $data);
@@ -27,9 +36,38 @@ class MuridController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Murid $murid, User $user, Request $request)
     {
-        //
+        $credentials = $request->validate([
+            "nis" => ["required", "unique:murids,nis"],
+            "nama" => ["required"],
+            "id_jurusan" => ["required"],
+            "id_kelas" => ["required"],
+
+        ]);
+
+        $murid->create($credentials);
+
+        $nis = $murid->where("nis", $credentials["nis"])->first();
+        $id = $nis->id;
+
+        $data = $request->validate([
+            "email" => ['required', 'unique:users,email'],
+            "password" => ['required', 'unique:users,password'],
+        ]);
+
+        $data["password"] = Hash::make($data["password"]);
+
+        $data = [
+            "email" => $data['email'],
+            "password" => $data['password'],
+            "role" => 'murid',
+            "profile_murid" => $id
+        ];
+
+        $user->create($data);
+
+        return redirect()->route("admin.management-murid")->with("pesan", "Data berhasil Ditambahkan");
     }
 
     /**

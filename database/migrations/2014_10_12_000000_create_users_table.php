@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
 
             $table->foreign("profile_guru")->references("id")->on("gurus")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign("profile_murid")->references("id")->on("murids")->cascadeOnDelete()->cascadeOnUpdate();
-            
+
         });
     }
 

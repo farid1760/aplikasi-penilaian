@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mapel;
 use App\Http\Requests\StoreMapelRequest;
 use App\Http\Requests\UpdateMapelRequest;
+use App\Models\Jurusan;
 use Symfony\Component\HttpFoundation\Request;
 
 class MapelController extends Controller
@@ -17,7 +18,10 @@ class MapelController extends Controller
     public function index()
     {
         $data = [
-            'action' => route("admin.management-mapel.create-process")
+            'action' => route("admin.management-mapel.create-process"),
+            'mapels' => Mapel::all(),
+            'jurusans' => Jurusan::all(),
+            'route' => "admin.management-kelas"
         ];
         return view('admin.management-mapel.index', $data);
     }

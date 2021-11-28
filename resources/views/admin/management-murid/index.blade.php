@@ -6,63 +6,7 @@
     </x-slot> --}}
 
     <section class="w-full h-screen">
-        <div class="sidebar float-left" id="col1">
-            <div class="min-h-screen flex flex-row bg-gray-100 w-60">
-                <div class="flex flex-col w-full bg-white rounded-r-3xl overflow-hidden">
-                    <ul class="flex flex-col py-4">
-                        <li>
-                            <a href="{{ route('admin.dashboard') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-home"></i></span>
-                                <span class="text-sm font-medium">Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-guru') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Guru</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-murid') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Murid</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-jurusan') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Jurusan</span>
-                            </a>
-                        </li>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.management-mapel') }}"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-user"></i></span>
-                                <span class="text-sm font-medium">Management Mapel</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
-                                        class="bx bx-log-out"></i></span>
-                                <span class="text-sm font-medium">Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-sidebar-admin></x-sidebar-admin>
 
         <div class="content px-10 pt-10 float-left" style="width: 82.2%">
             <div class="button w-full pb-10 flex justify-end">
@@ -96,12 +40,31 @@
                     </tr>
                 </thead>
                 <tbody class="block md:table-row-group">
+                    @forelse ($murids as $murid)
                     <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="nis" type="text" value="121323123" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="nama" type="text" value="Muhammad Ikhsan Bintang" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="jurusan" type="text" value="Rekayasa Perangkat Lunak" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="kelas" type="text" value="Pemrogramam dasar" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="email" type="text" value="ikhsanbintang3292@gmail.com" class="bg-transparent border-0 w-full"></td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            <input name="nis" type="text" value="{{ $murid->nis }}" class="bg-transparent border-0 w-full">
+                        </td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            <input name="nama" type="text" value="{{ $murid->nama }}" class="bg-transparent border-0 w-full">
+                        </td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            <select name="id_jurusan" id="jurusan" class="bg-transparent border-0 w-full">
+                                @foreach ($jurusans as $jurusan)
+                                <option value="{{ $jurusan->id }}" {{ $jurusan->id == $murid->id_jurusan ? "selected" : "" }}>{{ $jurusan->jurusan }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            <select name="id_kelas" id="kelas" class="bg-transparent border-0 w-full">
+                                @foreach ($kelas as $k)
+                                <option value="{{ $k->id }}" {{ $k->id == $murid->id_kelas ? "selected" : "" }}>{{ $k->kelas }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                            <input name="email" type="text" value="{{ $murid->email }}" class="bg-transparent border-0 w-full">
+                        </td>
                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                             <span class="inline-block w-1/3 md:hidden font-bold ">Actions</span>
                             <button
@@ -110,7 +73,13 @@
                               type="submit"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                         </td>
                     </tr>
-                   
+                    @empty
+                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                        <td colspan="6" class="text-xl text-center font-bold py-5">Data Murid Masih Kosong 😒😒</td>
+                    </tr>
+                    @endforelse
+
+
                 </tbody>
             </table>
 
@@ -123,20 +92,34 @@
         </x-slot>
         <div class="grid grid-cols-1 w-full">
             <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="nip">NIP</label>
-                <input type="text" class="rounded-lg" name="nip" placeholder="Masukan NIP">
+                <label class="pt-3 pb-1" for="nis">NIS</label>
+                <input type="text" class="rounded-lg" name="nis" placeholder="Masukan NIS">
             </div>
             <div class="input-group grid grid-cols-1">
                 <label class="pt-3 pb-1" for="name">Nama</label>
                 <input type="text" class="rounded-lg" name="nama" placeholder="Masukan Nama">
             </div>
             <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="jurusan">Jurusan</label>
-                <input type="text" class="rounded-lg" name="jurusan" placeholder="Masukan Jurusan">
+                <label class="pt-3 pb-1" for="kelas">Kelas</label>
+                <select name="id_kelas" id="" class="rounded-lg">
+                    <option selected disabled>Pilih Kelas</option>
+                    @forelse ($kelas as $k)
+                    <option value="{{ $k->id }}">{{ $k->kelas }}</option>
+                    @empty
+                    <option disabled>Data Kelas Kosong</option>
+                    @endforelse
+                </select>
             </div>
             <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="mapel">Mapel</label>
-                <input type="text" class="rounded-lg" name="mapel" placeholder="Masukan Mapel">
+                <label class="pt-3 pb-1" for="jurusan">Jurusan</label>
+                <select name="id_jurusan" id="" class="rounded-lg">
+                    <option selected disabled>Pilih Jurusan</option>
+                    @forelse ($jurusans as $jurusan)
+                    <option value="{{ $jurusan->id }}">{{ $jurusan->jurusan }}</option>
+                    @empty
+                    <option disabled>Data Jurusan Kosong</option>
+                    @endforelse
+                </select>
             </div>
             <div class="input-group grid grid-cols-1">
                 <label class="pt-3 pb-1" for="email">Email</label>
