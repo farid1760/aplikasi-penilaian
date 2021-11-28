@@ -22,7 +22,13 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['admin', 'guru', 'murid']);
             $table->rememberToken();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->unsignedBigInteger('profile_guru')->nullable();
+            $table->unsignedBigInteger('profile_murid')->nullable();
             $table->timestamps();
+
+            $table->foreign("profile_guru")->references("id")->on("gurus")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("profile_murid")->references("id")->on("murids")->cascadeOnDelete()->cascadeOnUpdate();
+            
         });
     }
 

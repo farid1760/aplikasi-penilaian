@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,18 @@ Route::middleware(['auth', 'is_guru'])->group(function () {
         return view('guru.dashboard');
     })->name('guru.dashboard');
 
+    Route::get('guru/management-nilai', function () {
+        $data = [
+            'action' => route("guru.management-nilai.create-process")
+        ];
+
+        return view('guru.management-nilai.index', $data);
+    })->name('guru.management-nilai');
+
+
+
+    Route::post('guru/management-nilai/create-process', function (Request $request) {
+        
+    })->name('guru.management-nilai.create-process');
 });
 

@@ -78,31 +78,16 @@
                         class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
                         <th
                             class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            NIP</th>
+                            NO</th>
                         <th
                             class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            NAMA GURU</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            JURUSAN</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            MAPEL</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            E-MAIL</th>
-                        <th
-                            class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">
-                            ACTIONS</th>
+                            KELAS</th>
                     </tr>
                 </thead>
                 <tbody class="block md:table-row-group">
                     <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="nip" type="text" value="121323123" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="nama_siswa" type="text" value="Muhammad Ikhsan Bintang" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="jurusan" type="text" value="Rekayasa Perangkat Lunak" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="mapel" type="text" value="Pemrogramam dasar" class="bg-transparent border-0 w-full"></td>
-                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input type="email" value="ikhsanbintang3292@gmail.com" class="bg-transparent border-0 w-full"></td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="no" type="text" value="121323123" class="bg-transparent border-0 w-full"></td>
+                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><input name="kelas" type="text" value="Muhammad Ikhsan Bintang" class="bg-transparent border-0 w-full"></td>
                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                             <span class="inline-block w-1/3 md:hidden font-bold ">Actions</span>
                             <button
@@ -124,28 +109,8 @@
         </x-slot>
         <div class="grid grid-cols-1 w-full">
             <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="nip">NIP</label>
-                <input type="text" class="rounded-lg" name="nip" placeholder="Masukan NIP">
-            </div>
-            <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="name">Nama</label>
-                <input type="text" class="rounded-lg" name="nama" placeholder="Masukan Nama">
-            </div>
-            <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="jurusan">Jurusan</label>
-                <input type="text" class="rounded-lg" name="id_jurusan" placeholder="Masukan Jurusan">
-            </div>
-            <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="mapel">Mapel</label>
-                <input type="text" class="rounded-lg" name="id_mapel" placeholder="Masukan Mapel">
-            </div>
-            <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="email">Email</label>
-                <input type="email" class="rounded-lg" name="email" placeholder="Masukan Email">
-            </div>
-            <div class="input-group grid grid-cols-1">
-                <label class="pt-3 pb-1" for="password">Password</label>
-                <input type="password" class="rounded-lg" name="password" placeholder="Masukan Password">
+                <label class="pt-3 pb-1" for="nip">Kelas</label>
+                <input type="text" class="rounded-lg" name="kelas" placeholder="Masukan NIP">
             </div>
         </div>
     </x-modal>

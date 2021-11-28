@@ -19,5 +19,9 @@ Route::middleware(['auth', 'is_murid'])->group(function () {
         return view('murid.dashboard');
     })->name('murid.dashboard');
 
+    Route::get('murid/nilai', function () {
+        return view('murid.nilai.index');
+    })->name('murid.nilai');
+
 });
 
