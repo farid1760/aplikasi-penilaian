@@ -19,23 +19,9 @@ class AdminSeeder extends Seeder
             [
                 "id" => 1,
                 "name" => "Muhammad Ikhsan Bintang",
-                "email" => "ikhsanbintang3292@gmail.com",
+                "email" => "admin@gmail.com",
                 "password" => Hash::make('admin123'),
                 "role" => 'admin'
-            ],
-            [
-                "id" => 2,
-                "name" => "Farid Akhmal Untoro",
-                "email" => "assasinzm410@gmail.com",
-                "password" => Hash::make('farid123'),
-                "role" => 'guru'
-            ],
-            [
-                "id" => 3,
-                "name" => "Muhamad Mustopa Bisri",
-                "email" => "topa123@gmail.com",
-                "password" => Hash::make('topa123'),
-                "role" => 'murid'
             ],
         ];
 
